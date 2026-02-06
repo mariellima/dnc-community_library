@@ -10,21 +10,21 @@ import { authMiddleware } from "../middlewares/auth.middleware.js";
 const router = Router();
 
 router.post(
-  "/users",
+  "/",
   validate(userSchema),
   userController.createUserController,
 );
 router.post(
-  "/users/login",
+  "/login",
   userController.loginUserController,
 );
 
 router.use(authMiddleware);
-router.get("/users", userController.findAllUsersController);
-router.get("/users/:id", validadeUserId, userController.findUserByIdController);
-router.patch("/users/:id", validadeUserId, userController.updateUserController);
+router.get("/", userController.findAllUsersController);
+router.get("/:id", validadeUserId, userController.findUserByIdController);
+router.patch("/:id", validadeUserId, userController.updateUserController);
 router.delete(
-  "/users/:id",
+  "/:id",
   validadeUserId,
   userController.deleteUserController,
 );

@@ -9,14 +9,14 @@ import { loanSchema } from "../schema/loan.schema.js";
 const router = Router();
 
 router.post(
-  "/loans",
+  "/",
   validate(loanSchema),
   loanController.createLoanController,
 );
-router.get("/loans", loanController.findAllLoansController);
-router.get("/loans/:id", validateLoanId, loanController.findLoanByIdController);
+router.get("/", loanController.findAllLoansController);
+router.get("/:id", validateLoanId, loanController.findLoanByIdController);
 router.delete(
-  "/loans/:id",
+  "/:id",
   validateLoanId,
   loanController.deleteLoanController,
 );
